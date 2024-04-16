@@ -1,15 +1,17 @@
-function mincost(arr)
-{ 
-//write your code here
-// return the min cost
-	 priority_queue = make_priority_queue(arr)
-    totalCost = 0
-    while size(priority_queue) > 1:
-        cost = pop(priority_queue) + pop(priority_queue)
-        totalCost += cost
-        push(priority_queue, cost)
-    return totalCost
-  
+const PriorityQueue = require('priorityqueuejs');
+
+function minCost(arr) {
+    let pq = new PriorityQueue(function(a, b) { return b - a });
+    for (let length of arr) {
+        pq.enq(length);
+    }
+    let totalCost = 0;
+    while (pq.size() > 1) {
+        let cost = pq.deq() + pq.deq();
+        totalCost += cost;
+        pq.enq(cost);
+    }
+    return totalCost;
 }
 
-module.exports=mincost;
+module.exports = minCost;
