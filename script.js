@@ -83,17 +83,4 @@ class MinHeap {
   }
 }
 
-// Function to handle button click and calculate minimum cost
-function calculateMinCost() {
-  const ropeLengthsInput = document.getElementById("ropeLengths").value;
-  const ropeLengthsArray = ropeLengthsInput.split(",").map(Number);
-  const resultElement = document.getElementById("result");
-
-  if (ropeLengthsArray.length === 0 || ropeLengthsArray.some(isNaN)) {
-    resultElement.innerText = "Please enter valid rope lengths.";
-    return;
-  }
-
-  const minCost = mincost(ropeLengthsArray);
-  resultElement.innerText = `Minimum cost to connect all ropes: ${minCost}`;
-}
+module.exports = mincost;
